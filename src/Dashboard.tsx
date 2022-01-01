@@ -9,7 +9,7 @@ function Dashboard() {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState('');
   return (
     <Suspense fallback="LOADING...">
-      <PlaylistOverview setSelectedPlaylistId={(playlistId) => setSelectedPlaylistId(playlistId)} />
+      <PlaylistOverview selectedPlaylistId={selectedPlaylistId} setSelectedPlaylistId={(playlistId) => setSelectedPlaylistId(playlistId)} />
       {selectedPlaylistId.length > 0 ? 
       <Suspense fallback="LOADING..."><PlaylistDetails playlistId={selectedPlaylistId} /></Suspense>
       : 

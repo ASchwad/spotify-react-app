@@ -40,7 +40,7 @@ function PlaylistOverview({selectedPlaylistId, setSelectedPlaylistId}: IProps) {
       <div className='flex overflow-y-scroll'>
         {data!.map(playlist => (
           <div className="p-3 mb-3" onClick={() => setSelectedPlaylistId(playlist.id)}>  
-            <div className="w-56 rounded overflow-hidden shadow-lg">
+            <div className="w-56 rounded overflow-hidden shadow-lg" style={{backgroundColor: selectedPlaylistId === playlist.id ?  "lightblue" : "transparent"}} >
               <img className="w-1/3 m-auto" src={playlist.images[1]?.url || 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Suh7FOTof_i0vIsm2Q1dEwAAAA%26pid%3DApi&f=1' } alt="Artists Cover"/>
               <div className="px-6 py-1">
                 <div className="font-bold text-lg">{playlist.name}</div>
