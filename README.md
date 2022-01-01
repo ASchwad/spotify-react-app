@@ -52,6 +52,7 @@ Calculate average feature values for each track in a playlist. Visualization via
 Filter playlist based on audio features and then add all songs to a new playlist.
 
 ## References
+- Tailwind elements: https://tailwind-elements.com/docs/standard/components/carousel/
 - https://developer.spotify.com/documentation/web-api/quick-start/
 - https://github.com/spotify/web-api-auth-examples
 - https://developer.spotify.com/dashboard/applications/fba3cb47d4d14044aeae581cd5be33a1
