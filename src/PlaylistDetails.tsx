@@ -1,8 +1,8 @@
-import React from "react";
-import "./App.css";
-import axios, { AxiosRequestConfig } from "axios";
-import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './App.css';
+import axios, { AxiosRequestConfig } from 'axios';
+import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 function getPlaylistDetails(token: string, playlistId: string): Promise<any> {
   return new Promise((resolve, reject) => {
@@ -24,7 +24,7 @@ function getPlaylistDetails(token: string, playlistId: string): Promise<any> {
 function PlaylistPopularity({ tracks }: any) {
   const totalPopularity = tracks.reduce(
     (acc: any, curr: any) => acc + curr.track.popularity,
-    0
+    0,
   );
 
   return (
@@ -52,16 +52,16 @@ function PlaylistPopularity({ tracks }: any) {
 function PlaylistDetails({ playlistId }: any) {
   const navigate = useNavigate();
   const token = window.location.href
-    .split("access_token=")[1]
-    .split("&token_type")[0];
+    .split('access_token=')[1]
+    .split('&token_type')[0];
   const { data, isLoading, isError } = useQuery(
     `playlist_details_${playlistId}`,
-    () => getPlaylistDetails(token, playlistId)
+    () => getPlaylistDetails(token, playlistId),
   );
   console.log(data);
 
   if (isError) {
-    navigate("/");
+    navigate('/');
   }
   if (isLoading) return null;
   return (

@@ -1,11 +1,11 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 function generateRandomString(length: number) {
-  let text = "";
+  let text = '';
   const possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
   for (let i = 0; i < length; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -14,16 +14,16 @@ function generateRandomString(length: number) {
 }
 
 function generateAuthURL() {
-  const client_id = "fba3cb47d4d14044aeae581cd5be33a1"; // Your client id
-  const redirect_uri = "http://localhost:3000/dashboard"; // Your redirect uri
+  const client_id = 'fba3cb47d4d14044aeae581cd5be33a1'; // Your client id
+  const redirect_uri = 'http://localhost:3000/dashboard'; // Your redirect uri
 
   const state = generateRandomString(16);
 
   // localStorage.setItem(stateKey, state);
-  const scope = "user-read-private user-read-email";
+  const scope = 'user-read-private user-read-email';
 
-  let url = "https://accounts.spotify.com/authorize";
-  url += "?response_type=token";
+  let url = 'https://accounts.spotify.com/authorize';
+  url += '?response_type=token';
   url += `&client_id=${encodeURIComponent(client_id)}`;
   url += `&scope=${encodeURIComponent(scope)}`;
   url += `&redirect_uri=${encodeURIComponent(redirect_uri)}`;
