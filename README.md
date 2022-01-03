@@ -202,3 +202,6 @@ Generally speaking, songs that are being played a lot now will have a higher pop
 
 ## Deployment
 Github pages is not directly compatible with the react-router-dom library. To avoid the usage of [Hashrouter](https://www.freecodecamp.org/news/deploy-a-react-app-to-github-pages/), we use a [scripting approach](https://github.com/rafgraph/spa-github-pages) to redirect the subroutes. Manifested in `404.html` and `index.html`.
+
+GH Pages deployment workflow in `.github/workflows/deploy-to-gh-pages.yml` - [instructions](https://dev.to/pierresaid/deploy-node-projects-to-github-pages-with-github-actions-4jco):
+Builds the project, deploys the `build` folder to `gh-pages` branch and publishes the new app [here](https://aschwad.github.io/spotify-react-app/).
