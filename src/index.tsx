@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.NODE_ENV === 'development' ? '' : '/spotify-react-app'}>
         <App />
       </BrowserRouter>
     </QueryClientProvider>

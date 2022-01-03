@@ -39,7 +39,7 @@ function PlaylistOverview({
   );
   console.log(data);
   if (isError) {
-    navigate('/login');
+    navigate('/');
   }
   if (isLoading) return null;
   return (

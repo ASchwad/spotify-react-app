@@ -15,8 +15,8 @@ function generateRandomString(length: number) {
 
 function generateAuthURL() {
   const client_id = 'fba3cb47d4d14044aeae581cd5be33a1'; // Your client id
-  const redirect_uri = 'http://localhost:3000/dashboard'; // Your redirect uri
-
+  const redirect_uri = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : 'https://aschwad.github.io/spotify-react-app/'}dashboard`; // Your redirect uri
+  console.log(`REDIRECT URI: ${  redirect_uri}`);
   const state = generateRandomString(16);
 
   // localStorage.setItem(stateKey, state);

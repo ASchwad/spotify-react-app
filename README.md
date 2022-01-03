@@ -199,3 +199,6 @@ Generally speaking, songs that are being played a lot now will have a higher pop
         "world-music"
     ]
 ```
+
+## Deployment
+Github pages is not directly compatible with the react-router-dom library. To avoid the usage of [Hashrouter](https://www.freecodecamp.org/news/deploy-a-react-app-to-github-pages/), we use a [scripting approach](https://github.com/rafgraph/spa-github-pages) to redirect the subroutes. Manifested in `404.html` and `index.html`.
