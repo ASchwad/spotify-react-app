@@ -1,8 +1,9 @@
 import React from 'react';
-import './App.css';
 import axios, { AxiosRequestConfig } from 'axios';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import { formatMsToMinutesAndSeconds } from 'helper/dateHelper';
+import Songs from './Songs';
 
 function getPlaylistDetails(token: string, playlistId: string): Promise<any> {
   return new Promise((resolve, reject) => {
@@ -21,7 +22,22 @@ function getPlaylistDetails(token: string, playlistId: string): Promise<any> {
   });
 }
 
-function PlaylistPopularity({ tracks }: any) {
+function Duration({ tracks }: any) {
+  const totalDuration = tracks.reduce(
+    (acc: any, curr: any) => acc + curr.track.duration_ms,
+    0,
+  );
+
+  return (
+    <>
+      <p className="text-2xl font-semibold">
+        Average Song length: {formatMsToMinutesAndSeconds(totalDuration / tracks.length)} minutes
+      </p>
+    </>
+  );
+}
+
+function Popularity({ tracks }: any) {
   const totalPopularity = tracks.reduce(
     (acc: any, curr: any) => acc + curr.track.popularity,
     0,
@@ -66,7 +82,9 @@ function PlaylistDetails({ playlistId }: any) {
   return (
     <div className="flex p-5 items-start flex-col">
       <h1 className="text-4xl font-light mb-2">Playlist: {data!.name}</h1>
-      <PlaylistPopularity tracks={data!.tracks.items} />
+      <Popularity tracks={data!.tracks.items} />
+      <Duration tracks={data!.tracks.items} />
+      <Songs tracks={data!.tracks.items} />
     </div>
   );
 }

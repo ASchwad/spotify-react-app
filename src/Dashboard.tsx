@@ -1,6 +1,6 @@
 import React, { Suspense, useState } from 'react';
 import './App.css';
-import PlaylistDetails from './PlaylistDetails';
+import PlaylistDetails from './PlaylistDetails/PlaylistDetails';
 import PlaylistOverview from './PlaylistOverview';
 
 
