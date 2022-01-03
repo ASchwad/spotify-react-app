@@ -29,11 +29,9 @@ function Duration({ tracks }: any) {
   );
 
   return (
-    <>
-      <p className="text-2xl font-semibold">
-        Average Song length: {formatMsToMinutesAndSeconds(totalDuration / tracks.length)} minutes
-      </p>
-    </>
+    <p className="text-2xl font-semibold">
+      Average Song length: {formatMsToMinutesAndSeconds(totalDuration / tracks.length)} minutes
+    </p>
   );
 }
 
