@@ -58,7 +58,6 @@ function PlaylistDetails({ playlistId }: any) {
     `playlist_details_${playlistId}`,
     () => getPlaylistDetails(token, playlistId),
   );
-  console.log(data);
 
   if (isError) {
     navigate('/');

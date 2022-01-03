@@ -37,7 +37,6 @@ function PlaylistOverview({
   const { data, isLoading, isError } = useQuery('playlists', () =>
     getPlaylists(token),
   );
-  console.log(data);
   if (isError) {
     navigate('/');
   }
