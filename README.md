@@ -1,11 +1,19 @@
 # Spotify App
+This open-source React app uses the Spotify API to allow users to gain insights in their playlists.
 
-## Auth flows
-### Implicit grant
+Technologies used:
+* React.js with Typescript
+* Tailwind CSS (Styling)
+* Github Pages (Hosting)
+* Github Actions (Deployment)
+
+## Spotify Auth flows
+<details>
+<summary>Implicit grant (Used in this App)</summary>
+<p>
 The implicit grant flow is carried out on the client side and it does not involve secret keys. Thus, you do not need any server-side code to use it. Access tokens issued are short-lived with no refresh token to extend them when they expire.
 
 > Best option for short-running frontend apps, where token expiration is not an issue
-
 How to retrieve an access token:
 ```
 var client_id = 'CLIENT_ID';
@@ -23,13 +31,22 @@ url += '&scope=' + encodeURIComponent(scope);
 url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
 url += '&state=' + encodeURIComponent(state);
 ```
-### client credentials
+</p>
+</details>
+
+<details>
+<summary>client credentials</summary>
+<p>
 The Client Credentials flow is used in server-to-server authentication. Since this flow does not include authorization, only endpoints that do not access user information can be accessed.
 
 Requests access token via the `client_id` and `client_secret`.
 
 > Best option when using non-user related api ("unscoped") api endpoints.
-### authorization code
+</p>
+</details>
+<details>
+<summary>authorization code</summary>
+<p>
 The authorization code flow is suitable for long-running applications (e.g. web and mobile apps) where the user grants permission only once.
 
 If you’re using the authorization code flow in a mobile app, or any other type of application where the client secret can’t be safely stored, then you should use the PKCE extension
@@ -40,6 +57,8 @@ If you’re using the authorization code flow in a mobile app, or any other type
 - The access token can then be used to make API calls
 
 > Access tokens are deliberately set to expire after a short time, after which new tokens may be granted by supplying the refresh token originally obtained during the authorization code exchange.
+</p>
+</details>
 
 ## Use cases
 ### Playlist analyzer
@@ -59,8 +78,12 @@ Filter playlist based on audio features and then add all songs to a new playlist
 - https://michael-ansong7.medium.com/how-to-implement-the-spotify-api-in-your-react-apps-624782586c8
 
 
+## Deployment
+Github pages is not directly compatible with the react-router-dom library. To avoid the usage of [Hashrouter](https://www.freecodecamp.org/news/deploy-a-react-app-to-github-pages/), we use a [scripting approach](https://github.com/rafgraph/spa-github-pages) to redirect the subroutes. Manifested in `404.html` and `index.html`.
 
-## Constants
+GH Pages deployment workflow in `.github/workflows/deploy-to-gh-pages.yml` - [instructions](https://dev.to/pierresaid/deploy-node-projects-to-github-pages-with-github-actions-4jco):
+Builds the project, deploys the `build` folder to `gh-pages` branch and publishes the new app [here](https://aschwad.github.io/spotify-react-app/).
+## Spotify specific Constants
 ### Track [audio features](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features)
 > Track popularity: 
 The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.
@@ -199,9 +222,3 @@ Generally speaking, songs that are being played a lot now will have a higher pop
         "world-music"
     ]
 ```
-
-## Deployment
-Github pages is not directly compatible with the react-router-dom library. To avoid the usage of [Hashrouter](https://www.freecodecamp.org/news/deploy-a-react-app-to-github-pages/), we use a [scripting approach](https://github.com/rafgraph/spa-github-pages) to redirect the subroutes. Manifested in `404.html` and `index.html`.
-
-GH Pages deployment workflow in `.github/workflows/deploy-to-gh-pages.yml` - [instructions](https://dev.to/pierresaid/deploy-node-projects-to-github-pages-with-github-actions-4jco):
-Builds the project, deploys the `build` folder to `gh-pages` branch and publishes the new app [here](https://aschwad.github.io/spotify-react-app/).
