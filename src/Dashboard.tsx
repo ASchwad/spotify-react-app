@@ -7,6 +7,14 @@ import PlaylistOverview from './PlaylistOverview';
 function Dashboard() {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState('');
 
+
+  React.useEffect(() => {
+    if (window.location.href.includes('access_token')) {
+      // eslint-disable-next-line prefer-destructuring
+      document.location.href = window.location.href.split('#access_token=')[0];
+    }
+  }, []);
+
   return (
     <Suspense fallback="LOADING...">
       <PlaylistOverview selectedPlaylistId={selectedPlaylistId} setSelectedPlaylistId={(playlistId) => setSelectedPlaylistId(playlistId)} />

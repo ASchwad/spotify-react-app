@@ -1,21 +1,15 @@
 import React, { Suspense } from 'react';
 import './App.css';
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
-function getPlaylists(token: string): Promise<any[]> {
+function getPlaylists(): Promise<any[]> {
   return new Promise((resolve, reject) => {
     const url = 'https://api.spotify.com/v1/me/playlists';
 
-    const config: AxiosRequestConfig = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
     axios
-      .get(url, config)
+      .get(url)
       .then((result) => resolve(result.data.items))
       .catch((error) => reject(error));
   });
@@ -31,11 +25,8 @@ function PlaylistOverview({
   setSelectedPlaylistId,
 }: IProps) {
   const navigate = useNavigate();
-  const token = window.location.href
-    .split('access_token=')[1]
-    .split('&token_type')[0];
   const { data, isLoading, isError } = useQuery('playlists', () =>
-    getPlaylists(token),
+    getPlaylists(),
   );
   if (isError) {
     navigate('/');

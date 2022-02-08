@@ -1,22 +1,16 @@
 import React from 'react';
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { formatMsToMinutesAndSeconds } from 'helper/dateHelper';
 import Songs from './Songs';
 
-function getPlaylistDetails(token: string, playlistId: string): Promise<any> {
+function getPlaylistDetails(playlistId: string): Promise<any> {
   return new Promise((resolve, reject) => {
     const url = `https://api.spotify.com/v1/playlists/${playlistId}`;
 
-    const config: AxiosRequestConfig = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
     axios
-      .get(url, config)
+      .get(url)
       .then((result) => resolve(result.data))
       .catch((error) => reject(error));
   });
@@ -65,12 +59,10 @@ function Popularity({ tracks }: any) {
 
 function PlaylistDetails({ playlistId }: any) {
   const navigate = useNavigate();
-  const token = window.location.href
-    .split('access_token=')[1]
-    .split('&token_type')[0];
+
   const { data, isLoading, isError } = useQuery(
     `playlist_details_${playlistId}`,
-    () => getPlaylistDetails(token, playlistId),
+    () => getPlaylistDetails(playlistId),
   );
 
   if (isError) {
