@@ -16,6 +16,21 @@ function getPlaylistDetails(playlistId: string): Promise<any> {
   });
 }
 
+function TopArtists({ tracks }: any) {
+  const countTracksByArtist  = _.countBy(tracks, (track) => track.track.artists[0].name);
+  const sortedArtistCount = _.orderBy(Object.keys(countTracksByArtist).map(key=>({ key, value: countTracksByArtist[key] })), 'value', ['desc']);
+  return (
+    <>
+      <p className="text-2xl font-semibold text-left">
+        Top 5 Artists:
+      </p>
+      <p className="text-lg text-left">
+        {sortedArtistCount.slice(0, 5).map((artist: any, index: number) => <p key={index}>{artist.key} - {artist.value} Songs</p>)}
+      </p>
+    </>
+  );
+}
+
 function Duration({ tracks }: any) {
   const totalDuration = tracks.reduce(
     (acc: any, curr: any) => acc + curr.track.duration_ms,
