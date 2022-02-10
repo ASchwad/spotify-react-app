@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './Login.css';
 
 function generateRandomString(length: number) {
   let text = '';
@@ -32,13 +32,21 @@ function generateAuthURL() {
 
 function Login() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a href={generateAuthURL()} className="text-lg font-light line">
-          Login with Spotify
-        </a>
-      </header>
+    <div className="LoginContainer">
+      <div>
+        <p className="Lyza">
+          LYZA
+        </p>
+        <p className='LyzaSubtitle'>
+          Analyze and configure your favorite Spotify Playlists
+        </p>
+      </div>
+      <button className="LoginButton pl-4 pr-4" type='submit' onClick={() => {window.location.href = generateAuthURL();}}>
+        <p className='text-white text-lg pl-4'>
+          Login with
+        </p>
+        <img src={logo} className="Spotify-logo" alt="logo" />
+      </button>
     </div>
   );
 }
