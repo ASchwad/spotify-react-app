@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/spotify-react-app/static/css/main.e4d5946f.css",
+    "main.css": "/spotify-react-app/static/css/main.2a2c7786.css",
     "main.js": "/spotify-react-app/static/js/main.880d8473.js",
     "static/js/787.412e44b1.chunk.js": "/spotify-react-app/static/js/787.412e44b1.chunk.js",
     "static/media/RedHatDisplay.ttf": "/spotify-react-app/static/media/RedHatDisplay.b61d49660dc6cb793cb5.ttf",
     "static/media/logo.svg": "/spotify-react-app/static/media/logo.2c7ee2466da3957958e7caa73bc96569.svg",
     "index.html": "/spotify-react-app/index.html",
-    "main.e4d5946f.css.map": "/spotify-react-app/static/css/main.e4d5946f.css.map",
+    "main.2a2c7786.css.map": "/spotify-react-app/static/css/main.2a2c7786.css.map",
     "main.880d8473.js.map": "/spotify-react-app/static/js/main.880d8473.js.map",
     "787.412e44b1.chunk.js.map": "/spotify-react-app/static/js/787.412e44b1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4d5946f.css",
+    "static/css/main.2a2c7786.css",
     "static/js/main.880d8473.js"
   ]
 }
