@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { formatMsToMinutesAndSeconds } from 'helper/dateHelper';
+import _ from 'lodash';
 import Songs from './Songs';
 
 function getPlaylistDetails(playlistId: string): Promise<any> {
@@ -89,6 +90,7 @@ function PlaylistDetails({ playlistId }: any) {
       <h1 className="text-4xl font-light mb-2">Playlist: {data!.name}</h1>
       <Popularity tracks={data!.tracks.items} />
       <Duration tracks={data!.tracks.items} />
+      <TopArtists tracks={data!.tracks.items} />
       <Songs tracks={data!.tracks.items} />
     </div>
   );
