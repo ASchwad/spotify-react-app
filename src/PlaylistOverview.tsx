@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import HorizontalScroll from 'react-scroll-horizontal';
 
 function getPlaylists(): Promise<any[]> {
   return new Promise((resolve, reject) => {
@@ -34,7 +35,7 @@ function PlaylistOverview({
   if (isLoading) return null;
   return (
     <Suspense fallback="LOADING...">
-      <div className="flex overflow-y-scroll">
+      <HorizontalScroll style={{ height: 180, display: 'flex' }}>
         {data!.map((playlist) => (
           <div
             key={playlist.id}
@@ -65,7 +66,7 @@ function PlaylistOverview({
             </div>
           </div>
         ))}
-      </div>
+      </HorizontalScroll>
     </Suspense>
   );
 }
