@@ -20,7 +20,7 @@
   font-size: 9rem;
   line-height: 180px;
   text-align: center;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.2em;
 }
 
 .LyzaSubtitle{
@@ -40,7 +40,7 @@
   align-self: center;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 60px;
 }
 
 .Spotify-logo {
