@@ -7,14 +7,19 @@ import Login from './Login';
 
 function App() {
   React.useEffect(() => {
-    if (!localStorage.getItem('token') && window.location.href.includes('access_token')) {
-        const token = window.location.href
-        .split('access_token=')[1]
-        .split('&token_type')[0];
-        localStorage.setItem('token', token);
-        if (token !== undefined) axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    } else {
+    // Check if there is a token in local storage
+    if (
+      localStorage.getItem('token_timestamp') &&
+      typeof localStorage.getItem('token_timestamp') == 'string' &&
+     new Date(localStorage.getItem('token_timestamp')!).valueOf() > (Date.now() - 1000 * 60 * 60)) {
       axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('token')}`;
+     } else if (window.location.href.includes('access_token')){
+         const token = window.location.href
+         .split('access_token=')[1]
+         .split('&token_type')[0];
+         localStorage.setItem('token', token);
+         localStorage.setItem('token_timestamp', (new Date()).toString());
+         if (token !== undefined) axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     }
   }, []);
 
