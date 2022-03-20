@@ -4,19 +4,23 @@ import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { formatMsToMinutesAndSeconds } from 'helper/dateHelper';
 import _ from 'lodash';
+import KeyValueItem from 'components/KeyValueItem';
 import Songs from './Songs';
 
 // eslint-disable-next-line consistent-return
 const fetchMoreTracks = (result: any, aggregatedResults: any): Promise<any> => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     if (result.next == null){
       resolve(aggregatedResults);
-    } 
+    }
     axios.get(result.next)
     // eslint-disable-next-line @typescript-eslint/no-loop-func
     .then(async (newResult) => {
       aggregatedResults.tracks.items = [...newResult.data.items, ...aggregatedResults.tracks.items];
       resolve(await fetchMoreTracks(newResult.data, aggregatedResults));
+    })
+    .catch((err) => {
+      reject(err);
     });
   });
 };
@@ -40,14 +44,12 @@ function TopArtists({ tracks }: any) {
   const countTracksByArtist  = _.countBy(tracks, (track) => track.track.artists[0].name);
   const sortedArtistCount = _.orderBy(Object.keys(countTracksByArtist).map(key=>({ key, value: countTracksByArtist[key] })), 'value', ['desc']);
   return (
-    <>
-      <p className="text-2xl font-semibold text-left">
-        Top 5 Artists:
+    <div className="flex flex-col items-start">
+      <p className="text-xs font-light">
+        Top Artists
       </p>
-      <p className="text-lg text-left">
-        {sortedArtistCount.slice(0, 5).map((artist: any, index: number) => <p key={index}>{artist.key} - {artist.value} Songs</p>)}
-      </p>
-    </>
+      {sortedArtistCount.slice(0, 5).map((artist: any, index: number) => <p className="text-2xl font-semibold" key={index}>{artist.key} - {artist.value} Songs</p>)}
+    </div>
   );
 }
 
@@ -58,9 +60,7 @@ function Duration({ tracks }: any) {
   );
 
   return (
-    <p className="text-2xl font-semibold">
-      Average Song length: {formatMsToMinutesAndSeconds(totalDuration / tracks.length)} minutes
-    </p>
+    <KeyValueItem description='Average Song length' value={`${formatMsToMinutesAndSeconds(totalDuration / tracks.length)} minutes`} />
   );
 }
 
@@ -71,24 +71,7 @@ function Popularity({ tracks }: any) {
   );
 
   return (
-    <>
-      <p className="text-2xl font-semibold">
-        Average Song Popularity: {(totalPopularity / tracks.length).toFixed(0)}
-      </p>
-      <p className="text-xs text-justify">
-        The popularity of the track. The value will be between 0 and 100, with
-        100 being the most popular. The popularity of a track is a value between
-        0 and 100, with 100 being the most popular. The popularity is calculated
-        by algorithm and is based, in the most part, on the total number of
-        plays the track has had and how recent those plays are. Generally
-        speaking, songs that are being played a lot now will have a higher
-        popularity than songs that were played a lot in the past. Duplicate
-        tracks (e.g. the same track from a single and an album) are rated
-        independently. Artist and album popularity is derived mathematically
-        from track popularity. Note: the popularity value may lag actual
-        popularity by a few days: the value is not updated in real time.
-      </p>
-    </>
+    <KeyValueItem description='Average Song Popularity' value={(totalPopularity / tracks.length).toFixed(0)} />
   );
 }
 
@@ -106,10 +89,13 @@ function PlaylistDetails({ playlistId }: any) {
   if (isLoading) return null;
   return (
     <div className="flex p-5 items-start flex-col">
-      <h1 className="text-4xl font-light mb-2">Playlist: {data!.name}</h1>
-      <Popularity tracks={data!.tracks.items} />
-      <Duration tracks={data!.tracks.items} />
-      <TopArtists tracks={data!.tracks.items} />
+      <p className="text-sm font-normal text-gray-600">PLAYLIST</p>
+      <h1 className="text-7xl font-light mb-6">{data!.name}</h1>
+      <div className='flex space-x-12 mb-3'>
+        <TopArtists tracks={data!.tracks.items} />
+        <Duration tracks={data!.tracks.items} />
+        <Popularity tracks={data!.tracks.items} />
+      </div>
       <Songs tracks={data!.tracks.items} />
     </div>
   );
