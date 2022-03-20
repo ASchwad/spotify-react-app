@@ -4,6 +4,7 @@ This open-source React app uses the Spotify API to allow users to gain insights 
 Technologies used:
 * React.js with Typescript
 * Tailwind CSS (Styling)
+* Headless UI
 * Github Pages (Hosting)
 * Github Actions (Deployment)
 
