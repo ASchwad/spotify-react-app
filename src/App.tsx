@@ -7,6 +7,7 @@ import Login from './Login';
 
 function App() {
   React.useEffect(() => {
+    axios.defaults.baseURL = 'https://api.spotify.com/v1';
     // Check if there is a token in local storage
     if (
       localStorage.getItem('token_timestamp') &&

@@ -1,20 +1,9 @@
 import React, { Suspense } from 'react';
 import './App.css';
-import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import HorizontalScroll from 'react-scroll-horizontal';
-
-function getPlaylists(): Promise<any[]> {
-  return new Promise((resolve, reject) => {
-    const url = 'https://api.spotify.com/v1/me/playlists';
-
-    axios
-      .get(url)
-      .then((result) => resolve(result.data.items))
-      .catch((error) => reject(error));
-  });
-}
+import { getPlaylists } from 'api/spotify';
 
 type IProps = {
   selectedPlaylistId?: string | null;

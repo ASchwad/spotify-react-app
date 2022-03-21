@@ -1,44 +1,11 @@
 import React from 'react';
-import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import { getPlaylistDetails } from 'api/spotify';
 import Songs from './Songs/Songs';
 import AveragePopularity from './AveragePopularity';
 import TopArtists from './TopArtists';
 import AverageSongLength from './AverageSongLength';
-
-// eslint-disable-next-line consistent-return
-const fetchMoreTracks = (result: any, aggregatedResults: any): Promise<any> => {
-  return new Promise((resolve, reject) => {
-    if (result.next == null){
-      resolve(aggregatedResults);
-    }
-    axios.get(result.next)
-    // eslint-disable-next-line @typescript-eslint/no-loop-func
-    .then(async (newResult) => {
-      aggregatedResults.tracks.items = [...newResult.data.items, ...aggregatedResults.tracks.items];
-      resolve(await fetchMoreTracks(newResult.data, aggregatedResults));
-    })
-    .catch((err) => {
-      reject(err);
-    });
-  });
-};
-
-function getPlaylistDetails(playlistId: string): Promise<any> {
-  return new Promise((resolve, reject) => {
-    const url = `https://api.spotify.com/v1/playlists/${playlistId}`;
-
-    axios
-      .get(url)
-      .then(async (result) => {
-        const aggregatedResults = result.data;
-        fetchMoreTracks(result.data.tracks, aggregatedResults)
-        .then((tracks) => resolve(tracks));
-      })
-     .catch((error) => reject(error));
-  });
-}
 
 function PlaylistDetails({ playlistId }: any) {
   const navigate = useNavigate();

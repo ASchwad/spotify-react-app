@@ -1,5 +1,5 @@
 import { Dialog } from '@headlessui/react';
-import axios from 'axios';
+import { getTrackFeatures } from 'api/spotify';
 import KeyValueItem from 'components/KeyValueItem';
 import React, { useEffect, useState } from 'react';
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts';
@@ -11,18 +11,6 @@ function SongDetailsDialog({ selectedTrack, setSelectedTrack }: any) {
     getTrackFeatures(selectedTrack?.id)
     .then((res) => setSelectedTrackDetails(res));
   }, [selectedTrack]);
-
-
-  function getTrackFeatures(trackId: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      const url = `https://api.spotify.com/v1/audio-features/${trackId}`;
-  
-      axios
-        .get(url)
-        .then(async (result) => resolve(result.data))
-       .catch((error) => reject(error));
-    });
-  }
 
   return (
     <Dialog open={selectedTrack !== null} onClose={() => setSelectedTrack(null)} className="fixed z-10 inset-0 overflow-y-auto flex">

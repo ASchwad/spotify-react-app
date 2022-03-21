@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 function TopArtists({ tracks }: any) {
   const countTracksByArtist  = _.countBy(tracks, (track) => track.track.artists[0].name);
