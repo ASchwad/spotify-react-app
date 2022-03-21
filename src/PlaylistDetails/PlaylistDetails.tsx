@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { formatMsToMinutesAndSeconds } from 'helper/dateHelper';
 import _ from 'lodash';
 import KeyValueItem from 'components/KeyValueItem';
-import Songs from './Songs';
+import Songs from './Songs/Songs';
 
 // eslint-disable-next-line consistent-return
 const fetchMoreTracks = (result: any, aggregatedResults: any): Promise<any> => {
