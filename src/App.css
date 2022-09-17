@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.App {
-  text-align: center;
-}
+@font-face {
+  font-family: 'Red Hat Display';
+  src: local('RedHatDisplay'), url(./fonts/RedHatDisplay.ttf) format('truetype');}
