@@ -1,6 +1,6 @@
 import { Dialog } from '@headlessui/react';
 import { getTrackFeatures } from 'api/spotify';
-import KeyValueItem from 'components/KeyValueItem';
+import KeyValueItem from 'components/Dashboard/KeyValueItem';
 import React, { useEffect, useState } from 'react';
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts';
 

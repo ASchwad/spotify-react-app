@@ -6,14 +6,3 @@
   height: 100vh;
   background: linear-gradient(180deg, rgba(219, 0, 255, 0.3) 44.27%, rgba(251, 255, 52, 0.273) 100%), linear-gradient(180deg, #7ADFFF 0%, rgba(239, 133, 178, 0.59) 100%);
 }
-
-.LoginButton{
-  background-color: black;
-  border-radius: 8px;
-  padding: 4px;
-  display: flex;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-}

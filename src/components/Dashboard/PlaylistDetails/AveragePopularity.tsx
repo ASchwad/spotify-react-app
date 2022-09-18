@@ -1,5 +1,5 @@
 import React from 'react';
-import KeyValueItem from 'components/KeyValueItem';
+import KeyValueItem from '../KeyValueItem';
 
 function AveragePopularity({ tracks }: any) {
   const totalPopularity = tracks.reduce(

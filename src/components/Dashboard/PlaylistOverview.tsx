@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import './App.css';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import HorizontalScroll from 'react-scroll-horizontal';

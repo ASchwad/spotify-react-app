@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatMsToMinutesAndSeconds } from 'helper/dateHelper';
-import KeyValueItem from 'components/KeyValueItem';
+import KeyValueItem from 'components/Dashboard/KeyValueItem';
 
 function AverageSongLength({ tracks }: any) {
   const totalDuration = tracks.reduce(
