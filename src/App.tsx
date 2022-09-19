@@ -3,7 +3,6 @@ import Dashboard from 'components/Dashboard/Dashboard';
 import Login from 'components/Login/Login';
 import * as React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 
 function App() {
   React.useEffect(() => {

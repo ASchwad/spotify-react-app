@@ -20,7 +20,7 @@ function Dashboard() {
       {selectedPlaylistId.length > 0 ? 
         <Suspense fallback="LOADING..."><PlaylistDetails playlistId={selectedPlaylistId} /></Suspense>
       : 
-        <div className="w-full h-full">
+        <div className="w-full h-full text-center">
           <p>Select a playlist!</p>
         </div>
       } 

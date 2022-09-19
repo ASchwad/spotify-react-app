@@ -14,7 +14,8 @@ Technologies used:
 <p>
 The implicit grant flow is carried out on the client side and it does not involve secret keys. Thus, you do not need any server-side code to use it. Access tokens issued are short-lived with no refresh token to extend them when they expire.
 
-> Best option for short-running frontend apps, where token expiration is not an issue
+> Best option for short-running frontend apps, where token expiration is not an issue  
+
 How to retrieve an access token:
 ```
 var client_id = 'CLIENT_ID';

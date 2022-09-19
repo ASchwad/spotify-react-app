@@ -40,7 +40,7 @@ function PlaylistOverview({
 
   return (
     <Suspense fallback="LOADING...">
-      <HorizontalScroll style={{ height: 200 }} className='flex p-3'>
+      <HorizontalScroll style={{ height: 200 }} className='flex p-3 text-center'>
         {isLoading ? <Skeletons /> : data!.map((playlist) => (
           <div
             key={playlist.id}

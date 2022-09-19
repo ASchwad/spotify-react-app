@@ -20,7 +20,7 @@ function PlaylistDetails({ playlistId }: any) {
   }
   if (isLoading) return null;
   return (
-    <div className="flex p-5 items-start flex-col">
+    <div className="flex p-5 items-start flex-col text-center">
       <p className="text-sm font-normal text-gray-600">PLAYLIST</p>
       <h1 className="text-7xl font-light mb-6">{data!.name}</h1>
       <div className='flex space-x-12 mb-3'>
