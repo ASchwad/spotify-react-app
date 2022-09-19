@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/spotify-react-app/static/css/main.e12827c8.css",
-    "main.js": "/spotify-react-app/static/js/main.92cc9de8.js",
+    "main.css": "/spotify-react-app/static/css/main.c654da86.css",
+    "main.js": "/spotify-react-app/static/js/main.8773663f.js",
     "static/js/787.412e44b1.chunk.js": "/spotify-react-app/static/js/787.412e44b1.chunk.js",
     "static/media/RedHatDisplay.ttf": "/spotify-react-app/static/media/RedHatDisplay.b61d49660dc6cb793cb5.ttf",
     "static/media/logo.svg": "/spotify-react-app/static/media/logo.2c7ee2466da3957958e7caa73bc96569.svg",
     "index.html": "/spotify-react-app/index.html",
-    "main.e12827c8.css.map": "/spotify-react-app/static/css/main.e12827c8.css.map",
-    "main.92cc9de8.js.map": "/spotify-react-app/static/js/main.92cc9de8.js.map",
+    "main.c654da86.css.map": "/spotify-react-app/static/css/main.c654da86.css.map",
+    "main.8773663f.js.map": "/spotify-react-app/static/js/main.8773663f.js.map",
     "787.412e44b1.chunk.js.map": "/spotify-react-app/static/js/787.412e44b1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e12827c8.css",
-    "static/js/main.92cc9de8.js"
+    "static/css/main.c654da86.css",
+    "static/js/main.8773663f.js"
   ]
 }
