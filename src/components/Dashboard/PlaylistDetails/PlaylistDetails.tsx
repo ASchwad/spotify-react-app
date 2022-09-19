@@ -10,7 +10,7 @@ import AverageSongLength from './AverageSongLength';
 function PlaylistDetails({ playlistId }: any) {
   const navigate = useNavigate();
 
-  const { data, isLoading, isError } = useQuery(
+  const { data, isError } = useQuery(
     `playlist_details_${playlistId}`,
     () => getPlaylistDetails(playlistId),
   );
@@ -18,7 +18,6 @@ function PlaylistDetails({ playlistId }: any) {
   if (isError) {
     navigate('/');
   }
-  if (isLoading) return null;
   return (
     <div className="flex p-5 items-start flex-col text-center">
       <p className="text-sm font-normal text-gray-600">PLAYLIST</p>

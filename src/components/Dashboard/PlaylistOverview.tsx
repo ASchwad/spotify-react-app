@@ -14,34 +14,18 @@ function PlaylistOverview({
   setSelectedPlaylistId,
 }: IProps) {
   const navigate = useNavigate();
-  const { data, isLoading, isError } = useQuery('playlists', () =>
+  const { data, isError } = useQuery('playlists', () =>
     getPlaylists(),
   );
   if (isError) {
     navigate('/');
   }
-  const Skeletons = () => {
-    return (
-      <>
-        {[...Array(10)].map((_, index) => (
-          <div key={index} className="w-56 h-36 p-6 mr-6 rounded-md mx-auto shadow-lg">
-            <div className="flex animate-pulse flex-col items-center h-full justify-center">
-              <div className="w-16 bg-gray-300 h-16 mb-3" />
-              <div className="flex flex-col justify-center">
-                <div className="w-36 bg-gray-300 h-6 rounded-md mb-1" />
-                <div className="w-24 bg-gray-300 h-4 rounded-md " />
-              </div>
-            </div>
-          </div>
-        ))}
-      </>
-    );
-  };
+
 
   return (
     <Suspense fallback="LOADING...">
       <HorizontalScroll style={{ height: 200 }} className='flex p-3 text-center'>
-        {isLoading ? <Skeletons /> : data!.map((playlist) => (
+        {data!.map((playlist) => (
           <div
             key={playlist.id}
             className="p-3 mb-3"
