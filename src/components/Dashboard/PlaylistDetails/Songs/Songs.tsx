@@ -16,6 +16,7 @@ function Songs({ tracks }: any) {
     } else {
       currentAudio.current.pause();
     }
+    return () => currentAudio.current?.pause();
   }, [currentPreviewMp3]);
 
 
